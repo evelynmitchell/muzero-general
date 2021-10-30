@@ -18,7 +18,7 @@ class MuZeroConfig:
     def __init__(self):
         # More information is available here: https://github.com/werner-duvaud/muzero-general/wiki/Hyperparameter-Optimization
 
-        self.seed = 0  # Seed for numpy, torch and the game
+        self.seed = 1  # Seed for numpy, torch and the game
         self.max_num_gpus = None  # Fix the maximum number of GPUs to use. It's usually faster to use a single GPU (set it to 1) if it has enough memory. None will use every GPUs available
 
 
@@ -30,7 +30,7 @@ class MuZeroConfig:
         self.stacked_observations = 0 # Number of previous observations and previous actions to add to the current observation
 
         # Evaluate
-        self.muzero_player = 0 # Turn Muzero begins to play (0: MuZero plays first, 1: MuZero plays second)
+        self.muzero_player = 0 # Turn Muzero begins to play (0: MuZero plays first, 1:  MuZero plays second)
         self.opponent = None # Hard coded agent that MuZero faces to assess his progress in multiplayer games. It doesn't influence training. None, "random" or "expert" if implemented in the Game class
 
 
