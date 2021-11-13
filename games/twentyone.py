@@ -31,7 +31,7 @@ class MuZeroConfig:
         self.stacked_observations = 0 # Number of previous observations and previous actions to add to the current observation
 
         # Evaluate
-        self.muzero_player = 0 # Turn Muzero begins to play (0: MuZero plays first, 1:  MuZero plays second)
+        self.muzero_player = numpy.random.Generator.integers(low=0, high=1) # Turn Muzero begins to play (0: MuZero plays first, 1:  MuZero plays second)
         self.opponent = None # Hard coded agent that MuZero faces to assess his progress in multiplayer games. It doesn't influence training. None, "random" or "expert" if implemented in the Game class
 
 
@@ -55,7 +55,7 @@ class MuZeroConfig:
 
 
         ### Network
-        self.network = "resnet"  # "resnet" / "fullyconnected"
+        self.network = "fullyconnectrd"  # "resnet" / "fullyconnected"
         self.support_size = 10  # Value and reward are scaled (with almost sqrt) and encoded on a vector with a range of -support_size to support_size. Choose it so that support_size <= sqrt(max(abs(discounted reward)))
 
         # Residual Network
@@ -88,7 +88,7 @@ class MuZeroConfig:
         self.value_loss_weight = 0.25  # Scale the value loss to avoid overfitting of the value function, paper recommends 0.25 (See paper appendix Reanalyze)
         self.train_on_gpu = torch.cuda.is_available()  # Train on GPU if available
 
-        self.optimizer = "SGD"  # "Adam" or "SGD". Paper uses SGD
+        self.optimizer = "Adam"  # "Adam" or "SGD". Paper uses SGD
         self.weight_decay = 1e-4  # L2 weights regularization
         self.momentum = 0.9  # Used only if optimizer is SGD
 
