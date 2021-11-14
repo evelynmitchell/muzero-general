@@ -19,7 +19,7 @@ class MuZeroConfig:
         # More information is available here: https://github.com/werner-duvaud/muzero-general/wiki/Hyperparameter-Optimization
 
 
-        self.seed = numpy.random.Generator.integers(low=0, high=1024)  # Seed for numpy, torch and the game
+        self.seed=1e024  # Seed for numpy, torch and the game
         self.max_num_gpus = None  # Fix the maximum number of GPUs to use. It's usually faster to use a single GPU (set it to 1) if it has enough memory. None will use every GPUs available
 
 
@@ -31,7 +31,7 @@ class MuZeroConfig:
         self.stacked_observations = 0 # Number of previous observations and previous actions to add to the current observation
 
         # Evaluate
-        self.muzero_player = numpy.random.Generator.integers(low=0, high=1) # Turn Muzero begins to play (0: MuZero plays first, 1:  MuZero plays second)
+        self.muzero_player = 0 # Turn Muzero begins to play (0: MuZero plays first, 1:  MuZero plays second)
         self.opponent = None # Hard coded agent that MuZero faces to assess his progress in multiplayer games. It doesn't influence training. None, "random" or "expert" if implemented in the Game class
 
 
@@ -55,7 +55,7 @@ class MuZeroConfig:
 
 
         ### Network
-        self.network = "fullyconnectrd"  # "resnet" / "fullyconnected"
+        self.network = "fullyconnected"  # "resnet" / "fullyconnected"
         self.support_size = 10  # Value and reward are scaled (with almost sqrt) and encoded on a vector with a range of -support_size to support_size. Choose it so that support_size <= sqrt(max(abs(discounted reward)))
 
         # Residual Network
